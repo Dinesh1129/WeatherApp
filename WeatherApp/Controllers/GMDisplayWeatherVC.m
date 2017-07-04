@@ -6,15 +6,15 @@
 //  Copyright © 2017 Dinesh Selvaraj. All rights reserved.
 //
 
-#import "DisplayWeatherVC.h"
-#import "DisplayWeatherManager.h"
+#import "GMDisplayWeatherVC.h"
+#import "GMDisplayWeatherManager.h"
 #import "DateModel.h"
 #import "ForecastDayModel.h"
 #import "Temperature.h"
+#import "GMDisplayWeatherCustomCell.h"
 
-@interface DisplayWeatherVC ()
+@interface GMDisplayWeatherVC ()
 {
-    DisplayWeatherManager *weatherMgr;
     UIActivityIndicatorView *serviceActivityIndicator;
 }
 
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation DisplayWeatherVC
+@implementation GMDisplayWeatherVC
 
 -(void)loadView{
     [super loadView];
@@ -32,19 +32,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    //Activity Indicator
+    //Activity Indicator - TODO
     serviceActivityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     [serviceActivityIndicator setCenter:self.view.center];
     [self.view addSubview:serviceActivityIndicator];
     
-    //Make Service call to get the weather forecast for three days
-    weatherMgr = [[DisplayWeatherManager alloc] init];
-    
-    
     [serviceActivityIndicator startAnimating];
     NSDictionary *requestDict = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:self.selectedCity,[NSNumber numberWithInt:3], nil] forKeys:[NSArray arrayWithObjects:@"selectedCity",@"numberOfDays",nil]];
     
-    [weatherMgr getWeatherForecastForTheCity:requestDict success:^(NSDictionary *responseDict, NSInteger status) {
+    [GMDisplayWeatherManager getWeatherForecastForTheCity:requestDict success:^(NSDictionary *responseDict, NSInteger status) {
         [serviceActivityIndicator stopAnimating];
         self.weatherData = [responseDict objectForKey:ServiceWeatherRecord];
         [self.tableView reloadData];
@@ -68,25 +64,15 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UITableViewCell *tableCell = [tableView dequeueReusableCellWithIdentifier:@"weatherCell"];
+    GMDisplayWeatherCustomCell *tableCell = [tableView dequeueReusableCellWithIdentifier:@"weatherCell"];
     
     ForecastDayModel *dayForecast = [self.weatherData objectAtIndex:indexPath.row];
-
+    
+    //TO-DO
     if(dayForecast != nil){
-        UILabel *dateLabel = (UILabel*)[tableCell viewWithTag:1];
-        UILabel *tempHigh = (UILabel*)[tableCell viewWithTag:2];
-        UILabel *tempLow = (UILabel*)[tableCell viewWithTag:3];
-        UILabel *condition = (UILabel*)[tableCell viewWithTag:4];
-        
-        DateModel *dateModel = dayForecast.date;
-        Temperature *tempHighModel = dayForecast.high;
-        Temperature *tempLowModel = dayForecast.low;
-        
-        dateLabel.text = dateModel.pretty;
-        tempHigh.text = [NSString stringWithFormat:@"%@°F|%@°C",tempHighModel.fahrenheit,tempHighModel.celsius];
-        tempLow.text = [NSString stringWithFormat:@"%@°F|%@°C",tempLowModel.fahrenheit,tempLowModel.celsius];
-        condition.text = dayForecast.conditions;
+        [tableCell updateUIWithModel:dayForecast];
     }
+    
     return tableCell;
 }
 

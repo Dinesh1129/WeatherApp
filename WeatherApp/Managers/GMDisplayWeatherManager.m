@@ -6,25 +6,25 @@
 //  Copyright © 2017 Dinesh Selvaraj. All rights reserved.
 //
 
-#import "DisplayWeatherManager.h"
+#import "GMDisplayWeatherManager.h"
 #import "ForecastModel.h"
 #import "ForecastDayModel.h"
 #import "CityDetailsModel.h"
 #import "CityModel.h"
-#import "CommonUtility.h"
+#import "GMCommonUtility.h"
 
 
 
 
-@implementation DisplayWeatherManager
+@implementation GMDisplayWeatherManager
 
 
--(void)getWeatherForecastForTheCity:(NSDictionary * )requestDict success:(ClientSuccessCallBackBlock)successBlock failureBlock:(ClientFailureCallBackBlock)failureBlock{
++(void)getWeatherForecastForTheCity:(NSDictionary * )requestDict success:(ClientSuccessCallBackBlock)successBlock failureBlock:(ClientFailureCallBackBlock)failureBlock{
     
     NSString *selectedCity = [requestDict objectForKey:ServiceSelectedCity];
     __block NSNumber *numberOfDays = [requestDict objectForKey:ServiceNumberOfDays];
     
-    NSString *finalURL = [NSString stringWithFormat:@"http://api.wunderground.com/api/59641563fdf5ea17/forecast10day/q/%@.json",[CommonUtility createPathParamForCity:selectedCity]];
+    NSString *finalURL = [NSString stringWithFormat:@"http://api.wunderground.com/api/59641563fdf5ea17/forecast10day/q/%@.json",[GMCommonUtility createPathParamForCity:selectedCity]];
     
     [GMServiceClient call:finalURL success:^(id responseObject, NSInteger status) {
         NSError *error;
@@ -37,7 +37,9 @@
         }
         NSArray *filteredArray = [foreCast.forecastDays subarrayWithRange:NSMakeRange(0, numberOfDays.integerValue)];
         NSMutableDictionary *responseDict = [[NSMutableDictionary alloc] init];
-        [responseDict setObject:filteredArray forKey:ServiceWeatherRecord];
+        if(filteredArray!=0){
+            [responseDict setObject:filteredArray forKey:ServiceWeatherRecord];
+        }
         successBlock(responseDict,status);
         
     } failure:^(NSError *error, NSInteger status) {
@@ -45,7 +47,7 @@
     }];
 }
 
--(void)getAllCitiesWithName:(NSDictionary *)requestDict success:(ClientSuccessCallBackBlock)successBlock failureBlock:(ClientFailureCallBackBlock)failureBlock{
++(void)getAllCitiesWithName:(NSDictionary *)requestDict success:(ClientSuccessCallBackBlock)successBlock failureBlock:(ClientFailureCallBackBlock)failureBlock{
     
     NSMutableDictionary *responseDict = [[NSMutableDictionary alloc] init];
     

@@ -6,22 +6,18 @@
 //  Copyright © 2017 Dinesh Selvaraj. All rights reserved.
 //
 
-#import "SelectCityVC.h"
-#import "DisplayWeatherVC.h"
-#import "DisplayWeatherManager.h"
+#import "GMSelectCityVC.h"
+#import "GMDisplayWeatherVC.h"
+#import "GMDisplayWeatherManager.h"
 #import "CityModel.h"
 
-@interface SelectCityVC ()
-{
-    DisplayWeatherManager *displayWeatherManager;
-    UIActivityIndicatorView *serviceActivityIndicator;
-}
+@interface GMSelectCityVC ()
 
 @property (nonatomic, strong) NSArray <CityModel *> *cityList;
 
 @end
 
-@implementation SelectCityVC
+@implementation GMSelectCityVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,13 +28,6 @@
     
     //Enable / Disable the btn based on the text length
     [self.getWeatherBtn setEnabled:[self shouldEnableWeatherBtn:self.cityTextField.text]];
-
-    //Hide weather button during initial load
-    displayWeatherManager = [[DisplayWeatherManager alloc]init];
-   
-    serviceActivityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    [serviceActivityIndicator setCenter:self.view.center];
-    [self.view addSubview:serviceActivityIndicator];
 }
 
 
@@ -56,6 +45,16 @@
 
 -(BOOL)textFieldShouldClear:(UITextField *)textField{
     [self.getWeatherBtn setEnabled:[self shouldEnableWeatherBtn:@""]];
+    
+    if([self.cityTextField isFirstResponder]){
+        [self.cityTextField resignFirstResponder];
+    }
+
+    return YES;
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self getWeatherBtnTapped:self.getWeatherBtn];
     return YES;
 }
 
@@ -86,20 +85,24 @@
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 50)];
-    headerView.backgroundColor = [UIColor greenColor];
-    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 50)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 0)];
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 0)];
     
     if([self.cityList count]==0){
+        headerView.backgroundColor = [UIColor clearColor];
+        headerLabel.textColor = [UIColor redColor];
         [headerLabel setText:@"No results for your search. Make sure you have entered correct city name"];
     }
     else{
+        headerView.backgroundColor = [UIColor greenColor];
         [headerLabel setText:@"There are multiple results. Please select one to get the weather forecast"];
     }
 
     [headerLabel setNumberOfLines:0];
     [headerLabel setLineBreakMode:NSLineBreakByWordWrapping];
+    [headerLabel sizeToFit];
     [headerView addSubview:headerLabel];
+    [headerView sizeToFit];
     return headerView;
 }
 
@@ -125,7 +128,7 @@
     if([[segue identifier] isEqualToString:@"SHOW_WEATHER"]){
         
         //Get Reference to destination view controller
-        DisplayWeatherVC *displayWeatherVC = [segue destinationViewController];
+        GMDisplayWeatherVC *displayWeatherVC = [segue destinationViewController];
         
         //Set any properties you want
         CityModel *selectedCityModel = [_cityList objectAtIndex:[self.cityTableView indexPathForSelectedRow].row];
@@ -139,11 +142,15 @@
 
 - (IBAction)getWeatherBtnTapped:(id)sender {
     
+    if([self.cityTextField isFirstResponder]){
+        [self.cityTextField resignFirstResponder];
+    }
+    
     NSDictionary *requestDict = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:self.cityTextField.text,[NSNumber numberWithInt:3], nil] forKeys:[NSArray arrayWithObjects:@"searchText",@"numberOfDays",nil]];
     
-    [serviceActivityIndicator startAnimating];
+    [self.activityIndicatorView startAnimating];
     
-    [displayWeatherManager getAllCitiesWithName:requestDict success:^(NSDictionary *responseDict, NSInteger status) {
+    [GMDisplayWeatherManager getAllCitiesWithName:requestDict success:^(NSDictionary *responseDict, NSInteger status) {
         
         NSArray *resultArray = [responseDict objectForKey:ServiceUSCityNames];
         NSLog(@"US Cities : %@", resultArray);
@@ -151,7 +158,7 @@
         resultArray = nil;
         [self.cityTableView setHidden:NO];
         [self.cityTableView reloadData];
-        [serviceActivityIndicator stopAnimating];
+        [self.activityIndicatorView stopAnimating];
         
     } failureBlock:^(NSError *error, NSInteger status) {
         
@@ -159,7 +166,7 @@
         self.cityList = nil;
         [self.cityTableView setHidden:NO];
         [self.cityTableView reloadData];
-        [serviceActivityIndicator stopAnimating];
+        [self.activityIndicatorView stopAnimating];
         
     }];
 }
@@ -168,7 +175,7 @@
 #pragma mark - Validation
 -(BOOL)shouldEnableWeatherBtn:(NSString*)textFieldString{
     
-    return textFieldString.length != 0 ? YES:NO;
+    return [textFieldString stringByReplacingOccurrencesOfString:@" " withString:@""].length != 0 ? YES:NO;
 }
 
 

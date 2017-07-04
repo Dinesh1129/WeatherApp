@@ -6,9 +6,9 @@
 //  Copyright © 2017 Dinesh Selvaraj. All rights reserved.
 //
 
-#import "CommonUtility.h"
+#import "GMCommonUtility.h"
 
-@implementation CommonUtility
+@implementation GMCommonUtility
 
 
 +(NSString*)createPathParamForCity:(NSString*)selectedCity{

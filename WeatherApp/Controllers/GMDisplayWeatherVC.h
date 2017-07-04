@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DisplayWeatherVC : UITableViewController
+@interface GMDisplayWeatherVC : UITableViewController
 @property (nonatomic, strong) NSString *selectedCity;
 @end

@@ -10,8 +10,8 @@
 		2164D61467AE472F16205588 /* libPods-WeatherApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 526CC7EDD00EF1C38A0E8255 /* libPods-WeatherApp.a */; };
 		4F051886ED5C5C7E7097B180 /* libPods-WeatherAppUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7230FBD3EFC05BABF044A79C /* libPods-WeatherAppUITests.a */; };
 		58B41F1B7F7965F48C33E32B /* libPods-WeatherAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 220A7ABE75878922FB20CD15 /* libPods-WeatherAppTests.a */; };
-		8C092A181F0340C100C4086B /* DisplayWeatherVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C092A171F0340C100C4086B /* DisplayWeatherVC.m */; };
-		8C739D261F01CC0100D733BC /* DisplayWeatherManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C739D251F01CC0100D733BC /* DisplayWeatherManager.m */; };
+		8C092A181F0340C100C4086B /* GMDisplayWeatherVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C092A171F0340C100C4086B /* GMDisplayWeatherVC.m */; };
+		8C739D261F01CC0100D733BC /* GMDisplayWeatherManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C739D251F01CC0100D733BC /* GMDisplayWeatherManager.m */; };
 		8C739D2F1F01CC6000D733BC /* GMServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C739D2E1F01CC6000D733BC /* GMServiceClient.m */; };
 		8C739D321F01CDA700D733BC /* GMHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C739D311F01CDA700D733BC /* GMHTTPSessionManager.m */; };
 		8C8D2AED1F01D6F9004E7566 /* ForecastModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C8D2AEC1F01D6F9004E7566 /* ForecastModel.m */; };
@@ -20,8 +20,9 @@
 		8C8D2AF91F01EE52004E7566 /* Temperature.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C8D2AF81F01EE52004E7566 /* Temperature.m */; };
 		8C8D2AFC1F0278AE004E7566 /* CityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C8D2AFB1F0278AE004E7566 /* CityModel.m */; };
 		8C8D2AFF1F027AF2004E7566 /* CityDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C8D2AFE1F027AF2004E7566 /* CityDetailsModel.m */; };
-		8C8D2B031F028876004E7566 /* CommonUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C8D2B021F028876004E7566 /* CommonUtility.m */; };
-		8C8D2B0C1F03073E004E7566 /* SelectCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C8D2B0A1F03073E004E7566 /* SelectCityVC.m */; };
+		8C8D2B031F028876004E7566 /* GMCommonUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C8D2B021F028876004E7566 /* GMCommonUtility.m */; };
+		8C8D2B0C1F03073E004E7566 /* GMSelectCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C8D2B0A1F03073E004E7566 /* GMSelectCityVC.m */; };
+		8CDAE0F41F04A4170013F052 /* GMDisplayWeatherCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDAE0F31F04A4170013F052 /* GMDisplayWeatherCustomCell.m */; };
 		8CFCB1951F019998007D5059 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFCB1941F019998007D5059 /* AppDelegate.m */; };
 		8CFCB19B1F019998007D5059 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CFCB1991F019998007D5059 /* Main.storyboard */; };
 		8CFCB19D1F019998007D5059 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CFCB19C1F019998007D5059 /* Assets.xcassets */; };
@@ -56,10 +57,10 @@
 		526CC7EDD00EF1C38A0E8255 /* libPods-WeatherApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeatherApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55A8CBEE5F1BCC76CD3A7703 /* Pods-WeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherApp/Pods-WeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 		7230FBD3EFC05BABF044A79C /* libPods-WeatherAppUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeatherAppUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C092A161F0340C100C4086B /* DisplayWeatherVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayWeatherVC.h; sourceTree = "<group>"; };
-		8C092A171F0340C100C4086B /* DisplayWeatherVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayWeatherVC.m; sourceTree = "<group>"; };
-		8C739D241F01CC0100D733BC /* DisplayWeatherManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayWeatherManager.h; sourceTree = "<group>"; };
-		8C739D251F01CC0100D733BC /* DisplayWeatherManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayWeatherManager.m; sourceTree = "<group>"; };
+		8C092A161F0340C100C4086B /* GMDisplayWeatherVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMDisplayWeatherVC.h; sourceTree = "<group>"; };
+		8C092A171F0340C100C4086B /* GMDisplayWeatherVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMDisplayWeatherVC.m; sourceTree = "<group>"; };
+		8C739D241F01CC0100D733BC /* GMDisplayWeatherManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMDisplayWeatherManager.h; sourceTree = "<group>"; };
+		8C739D251F01CC0100D733BC /* GMDisplayWeatherManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMDisplayWeatherManager.m; sourceTree = "<group>"; };
 		8C739D2D1F01CC6000D733BC /* GMServiceClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMServiceClient.h; sourceTree = "<group>"; };
 		8C739D2E1F01CC6000D733BC /* GMServiceClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMServiceClient.m; sourceTree = "<group>"; };
 		8C739D301F01CDA700D733BC /* GMHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMHTTPSessionManager.h; sourceTree = "<group>"; };
@@ -76,10 +77,12 @@
 		8C8D2AFB1F0278AE004E7566 /* CityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityModel.m; sourceTree = "<group>"; };
 		8C8D2AFD1F027AF2004E7566 /* CityDetailsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityDetailsModel.h; sourceTree = "<group>"; };
 		8C8D2AFE1F027AF2004E7566 /* CityDetailsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityDetailsModel.m; sourceTree = "<group>"; };
-		8C8D2B011F028876004E7566 /* CommonUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtility.h; sourceTree = "<group>"; };
-		8C8D2B021F028876004E7566 /* CommonUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtility.m; sourceTree = "<group>"; };
-		8C8D2B091F03073E004E7566 /* SelectCityVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCityVC.h; sourceTree = "<group>"; };
-		8C8D2B0A1F03073E004E7566 /* SelectCityVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCityVC.m; sourceTree = "<group>"; };
+		8C8D2B011F028876004E7566 /* GMCommonUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMCommonUtility.h; sourceTree = "<group>"; };
+		8C8D2B021F028876004E7566 /* GMCommonUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMCommonUtility.m; sourceTree = "<group>"; };
+		8C8D2B091F03073E004E7566 /* GMSelectCityVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMSelectCityVC.h; sourceTree = "<group>"; };
+		8C8D2B0A1F03073E004E7566 /* GMSelectCityVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMSelectCityVC.m; sourceTree = "<group>"; };
+		8CDAE0F21F04A4170013F052 /* GMDisplayWeatherCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMDisplayWeatherCustomCell.h; sourceTree = "<group>"; };
+		8CDAE0F31F04A4170013F052 /* GMDisplayWeatherCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMDisplayWeatherCustomCell.m; sourceTree = "<group>"; };
 		8CFCB1901F019998007D5059 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFCB1931F019998007D5059 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8CFCB1941F019998007D5059 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -158,8 +161,8 @@
 		8C8D2B001F028845004E7566 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				8C8D2B011F028876004E7566 /* CommonUtility.h */,
-				8C8D2B021F028876004E7566 /* CommonUtility.m */,
+				8C8D2B011F028876004E7566 /* GMCommonUtility.h */,
+				8C8D2B021F028876004E7566 /* GMCommonUtility.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -178,10 +181,10 @@
 		8CC5BF4D1F01CADD002E2E2D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8C8D2B091F03073E004E7566 /* SelectCityVC.h */,
-				8C8D2B0A1F03073E004E7566 /* SelectCityVC.m */,
-				8C092A161F0340C100C4086B /* DisplayWeatherVC.h */,
-				8C092A171F0340C100C4086B /* DisplayWeatherVC.m */,
+				8C8D2B091F03073E004E7566 /* GMSelectCityVC.h */,
+				8C8D2B0A1F03073E004E7566 /* GMSelectCityVC.m */,
+				8C092A161F0340C100C4086B /* GMDisplayWeatherVC.h */,
+				8C092A171F0340C100C4086B /* GMDisplayWeatherVC.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -189,10 +192,19 @@
 		8CC5BF4E1F01CAEA002E2E2D /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				8C739D241F01CC0100D733BC /* DisplayWeatherManager.h */,
-				8C739D251F01CC0100D733BC /* DisplayWeatherManager.m */,
+				8C739D241F01CC0100D733BC /* GMDisplayWeatherManager.h */,
+				8C739D251F01CC0100D733BC /* GMDisplayWeatherManager.m */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		8CDAE0F11F04A3E80013F052 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				8CDAE0F21F04A4170013F052 /* GMDisplayWeatherCustomCell.h */,
+				8CDAE0F31F04A4170013F052 /* GMDisplayWeatherCustomCell.m */,
+			);
+			name = CustomCell;
 			sourceTree = "<group>";
 		};
 		8CFCB1871F019998007D5059 = {
@@ -220,6 +232,7 @@
 		8CFCB1921F019998007D5059 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				8CDAE0F11F04A3E80013F052 /* CustomCell */,
 				8C8D2B001F028845004E7566 /* Utility */,
 				8C8D2AEA1F01D6BB004E7566 /* ModelObjects */,
 				8CC5BF4E1F01CAEA002E2E2D /* Managers */,
@@ -548,16 +561,17 @@
 				8C8D2AF31F01D9AF004E7566 /* DateModel.m in Sources */,
 				8CFCB1A31F019998007D5059 /* main.m in Sources */,
 				8C8D2AF61F01EC22004E7566 /* ForecastDayModel.m in Sources */,
-				8C8D2B031F028876004E7566 /* CommonUtility.m in Sources */,
+				8C8D2B031F028876004E7566 /* GMCommonUtility.m in Sources */,
 				8C8D2AF91F01EE52004E7566 /* Temperature.m in Sources */,
 				8C8D2AFF1F027AF2004E7566 /* CityDetailsModel.m in Sources */,
 				8CFCB1951F019998007D5059 /* AppDelegate.m in Sources */,
 				8C739D321F01CDA700D733BC /* GMHTTPSessionManager.m in Sources */,
 				8C739D2F1F01CC6000D733BC /* GMServiceClient.m in Sources */,
 				8C8D2AFC1F0278AE004E7566 /* CityModel.m in Sources */,
-				8C739D261F01CC0100D733BC /* DisplayWeatherManager.m in Sources */,
-				8C092A181F0340C100C4086B /* DisplayWeatherVC.m in Sources */,
-				8C8D2B0C1F03073E004E7566 /* SelectCityVC.m in Sources */,
+				8CDAE0F41F04A4170013F052 /* GMDisplayWeatherCustomCell.m in Sources */,
+				8C739D261F01CC0100D733BC /* GMDisplayWeatherManager.m in Sources */,
+				8C092A181F0340C100C4086B /* GMDisplayWeatherVC.m in Sources */,
+				8C8D2B0C1F03073E004E7566 /* GMSelectCityVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
